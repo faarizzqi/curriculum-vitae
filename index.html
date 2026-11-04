@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Dokumen - CV & Resume | Ridho Farizqi</title>
+  <!-- Tailwind CSS via Google Allowlisted CDN -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.04);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.5);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(107, 114, 128, 0.8);
+    }
+
+    .viewer-container {
+      background-color: #525659;
+      background-image: radial-gradient(#606468 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .sheet-wrapper {
+      transition: transform 0.15s ease-out;
+      transform-origin: top center;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 h-screen flex overflow-hidden antialiased select-none">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="w-80 bg-white border-r border-slate-200 flex flex-col h-full transition-all duration-300 z-30 shadow-sm relative">
+    
+    <!-- Sidebar Header -->
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
+      <div class="flex items-center gap-3 overflow-hidden">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-sm shadow-blue-500/20 shrink-0">
+          RF
+        </div>
+        <div class="truncate">
+          <h1 class="font-bold text-slate-900 text-sm leading-tight truncate">Ridho Farizqi</h1>
+          <p class="text-xs text-slate-500 font-medium">CV & Resume Portfolio</p>
+        </div>
+      </div>
+      <button id="btnToggleSidebarMobile" class="md:hidden text-slate-400 hover:text-slate-600 p-1 rounded-md">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="p-3 border-b border-slate-100">
+      <div class="relative">
+        <svg class="w-4 h-4 absolute left-3 top-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Cari dokumen CV / Resume..." 
+          class="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition"
+        >
+      </div>
+
+      <!-- Quick Category Pills -->
+      <div class="flex items-center gap-1.5 mt-2.5 overflow-x-auto pb-1 text-xs font-medium">
+        <button data-filter="all" class="filter-pill active px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">Semua</button>
+        <button data-filter="Curriculum Vitae" class="filter-pill px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 hover:bg-slate-200">CV</button>
+        <button data-filter="Resume" class="filter-pill px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 hover:bg-slate-200">Resume</button>
+        <button data-filter="Dokumen PDF" class="filter-pill px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 hover:bg-slate-200">PDF</button>
+      </div>
+    </div>
+
+    <!-- Document List (Loaded from menu/) -->
+    <div class="flex-1 overflow-y-auto p-2.5 space-y-1.5" id="documentList">
+      <div class="text-center py-8 text-xs text-slate-400">
+        <div class="animate-spin inline-block w-5 h-5 border-2 border-current border-t-transparent text-blue-600 rounded-full mb-2"></div>
+        <p>Memuat daftar dokumen dari folder <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-600">menu/</code>...</p>
+      </div>
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-3 border-t border-slate-200 bg-slate-50/80 text-xs text-slate-500 flex items-center justify-between">
+      <div class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span id="docCount" class="font-medium text-slate-700">0 dokumen</span>
+      </div>
+      <button id="btnRefreshMenu" title="Refresh Daftar Dokumen" class="p-1 hover:bg-slate-200 rounded text-slate-600 transition flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <span class="text-[11px]">Reload</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEWER CONTENT -->
+  <main class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100">
+    
+    <!-- Top Action Toolbar -->
+    <header class="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between z-20 shadow-xs">
+      <div class="flex items-center gap-3">
+        <!-- Toggle Sidebar Button (Desktop/Mobile) -->
+        <button id="btnToggleSidebar" class="p-1.5 text-slate-600 hover:bg-slate-100 rounded-lg transition" title="Toggle Sidebar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <div class="border-l border-slate-200 h-6"></div>
+
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 id="activeDocTitle" class="font-semibold text-slate-900 text-sm md:text-base leading-tight">Memuat...</h2>
+            <span id="activeDocBadge" class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">HTML</span>
+          </div>
+          <p id="activeDocDesc" class="text-xs text-slate-500 truncate max-w-md hidden sm:block">Silakan pilih dokumen dari menu sebelah kiri</p>
+        </div>
+      </div>
+
+      <!-- Control Tools (Zoom, Print, Open) -->
+      <div class="flex items-center gap-1.5 md:gap-2">
+        <!-- Zoom Controls -->
+        <div class="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200">
+          <button id="btnZoomOut" class="p-1.5 text-slate-600 hover:bg-white rounded hover:shadow-xs transition" title="Zoom Out">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+          </button>
+          <span id="zoomLabel" class="text-xs font-semibold px-2 min-w-[48px] text-center text-slate-700">100%</span>
+          <button id="btnZoomIn" class="p-1.5 text-slate-600 hover:bg-white rounded hover:shadow-xs transition" title="Zoom In">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <button id="btnZoomReset" class="p-1.5 text-slate-500 hover:text-slate-800 text-[11px] font-medium border-l border-slate-200 px-2" title="Reset Zoom">Fit</button>
+        </div>
+
+        <div class="border-l border-slate-200 h-6 mx-0.5 hidden sm:block"></div>
+
+        <!-- Action Buttons -->
+        <button id="btnPrint" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 hover:border-slate-400 transition shadow-xs">
+          <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Cetak / PDF</span>
+        </button>
+
+        <a id="btnOpenNewTab" href="#" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition shadow-xs shadow-blue-500/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          <span class="hidden md:inline">Buka Dokumen</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Document Canvas / Viewport -->
+    <div id="viewerContainer" class="flex-1 viewer-container overflow-auto p-4 md:p-8 flex justify-center items-start relative">
+      
+      <!-- Loading Overlay -->
+      <div id="iframeLoader" class="absolute inset-0 bg-slate-900/10 backdrop-blur-xs flex items-center justify-center z-10 transition-opacity duration-200 pointer-events-none opacity-0">
+        <div class="bg-white/95 px-4 py-3 rounded-xl shadow-lg border border-slate-200 flex items-center gap-3">
+          <div class="animate-spin w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+          <span class="text-xs font-medium text-slate-700">Memuat berkas...</span>
+        </div>
+      </div>
+
+      <!-- Document Sheet Wrapper for scaling -->
+      <div id="sheetWrapper" class="sheet-wrapper w-full max-w-[900px] bg-white rounded-lg shadow-2xl overflow-hidden border border-slate-300">
+        <iframe 
+          id="docFrame" 
+          src="about:blank" 
+          class="w-full border-0 bg-white"
+          style="min-height: 1100px; height: 85vh;"
+          title="Dokumen Pratinjau"
+        ></iframe>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Initial Document Manifest (Fallback if menu.json cannot be fetched via file:// protocol)
+    const DEFAULT_DOCUMENTS = [
+      {
+        id: "cv",
+        name: "Curriculum Vitae",
+        filename: "cv.html",
+        path: "menu/cv.html",
+        role: "Ridho Farizqi - Comprehensive CV",
+        type: "html",
+        category: "Curriculum Vitae",
+        pages: "Multi-page",
+        date: "2026",
+        description: "Dokumen riwayat hidup lengkap (Harvard Style) dengan floating toolbar cetak."
+      },
+      {
+        id: "resume1",
+        name: "Resume - Junior Data Analyst",
+        filename: "resume1.html",
+        path: "menu/resume1.html",
+        role: "Junior Data Analyst",
+        type: "html",
+        category: "Resume",
+        pages: "1 Page Optimized",
+        date: "2026",
+        description: "Resume terfokus pada kompetensi Data Analytics, Python, SQL, BI, dan Machine Learning."
+      },
+      {
+        id: "resume2",
+        name: "Resume - IT Support Specialist",
+        filename: "resume2.html",
+        path: "menu/resume2.html",
+        role: "IT Support Specialist",
+        type: "html",
+        category: "Resume",
+        pages: "1 Page Optimized",
+        date: "2026",
+        description: "Resume terfokus pada IT Support, Network Troubleshooting, System Maintenance, dan Helpdesk."
+      },
+      {
+        id: "cv_pdf",
+        name: "CV Farizqi (PDF)",
+        filename: "cv.pdf",
+        path: "menu/cv.pdf",
+        role: "PDF Version",
+        type: "pdf",
+        category: "Dokumen PDF",
+        pages: "PDF Document",
+        date: "2026",
+        description: "Versi PDF siap unduh dan cetak langsung."
+      }
+    ];
+
+    let currentDocs = [];
+    let activeDoc = null;
+    let currentZoom = 1.0;
+    let currentFilter = 'all';
+
+    // DOM Elements
+    const sidebar = document.getElementById('sidebar');
+    const documentList = document.getElementById('documentList');
+    const docCount = document.getElementById('docCount');
+    const activeDocTitle = document.getElementById('activeDocTitle');
+    const activeDocBadge = document.getElementById('activeDocBadge');
+    const activeDocDesc = document.getElementById('activeDocDesc');
+    const docFrame = document.getElementById('docFrame');
+    const sheetWrapper = document.getElementById('sheetWrapper');
+    const iframeLoader = document.getElementById('iframeLoader');
+    const zoomLabel = document.getElementById('zoomLabel');
+    const btnOpenNewTab = document.getElementById('btnOpenNewTab');
+    const searchInput = document.getElementById('searchInput');
+
+    // Load Document List from menu/menu.json or fallback
+    async function loadMenuFiles() {
+      try {
+        const response = await fetch('menu/menu.json', { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          currentDocs = (Array.isArray(data) && data.length > 0) ? data : DEFAULT_DOCUMENTS;
+        } else {
+          currentDocs = DEFAULT_DOCUMENTS;
+        }
+      } catch (err) {
+        console.warn('Gagal fetch menu.json (kemungkinan berjalan lokal via file://), menggunakan fallback default:', err);
+        currentDocs = DEFAULT_DOCUMENTS;
+      }
+      renderSidebar();
+      if (!activeDoc && currentDocs.length > 0) {
+        selectDocument(currentDocs[0].id);
+      }
+    }
+
+    // Render Sidebar List
+    function renderSidebar() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const filtered = currentDocs.filter(doc => {
+        const matchesCategory = (currentFilter === 'all') || (doc.category === currentFilter);
+        const matchesSearch = doc.name.toLowerCase().includes(searchTerm) || 
+                              doc.role.toLowerCase().includes(searchTerm) || 
+                              doc.filename.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+      });
+
+      docCount.textContent = `${filtered.length} dari ${currentDocs.length} dokumen`;
+
+      if (filtered.length === 0) {
+        documentList.innerHTML = `
+          <div class="text-center py-10 px-4 text-slate-400">
+            <svg class="w-8 h-8 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-xs font-medium">Tidak ada dokumen yang sesuai</p>
+          </div>
+        `;
+        return;
+      }
+
+      documentList.innerHTML = filtered.map(doc => {
+        const isActive = activeDoc && activeDoc.id === doc.id;
+        const isPdf = doc.type === 'pdf' || doc.filename.endsWith('.pdf');
+        
+        const icon = isPdf 
+          ? `<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`
+          : `<svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`;
+
+        const badgeClass = isPdf 
+          ? 'bg-red-50 text-red-600 border border-red-200' 
+          : 'bg-blue-50 text-blue-600 border border-blue-200';
+
+        return `
+          <button 
+            type="button"
+            onclick="selectDocument('${doc.id}')"
+            class="w-full text-left p-2.5 rounded-xl border transition flex items-start gap-3 group ${
+              isActive 
+                ? 'bg-blue-50/70 border-blue-300 ring-1 ring-blue-400/50 shadow-xs' 
+                : 'bg-white hover:bg-slate-50 border-slate-200 hover:border-slate-300'
+            }"
+          >
+            <div class="p-2 rounded-lg ${isActive ? 'bg-white shadow-xs' : 'bg-slate-100 group-hover:bg-white'} shrink-0 mt-0.5">
+              ${icon}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1 mb-0.5">
+                <span class="font-semibold text-xs text-slate-900 truncate">${doc.name}</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider ${badgeClass}">${doc.type || 'DOC'}</span>
+              </div>
+              <p class="text-[11px] text-slate-500 truncate mb-1">${doc.role || doc.filename}</p>
+              <div class="flex items-center gap-2 text-[10px] text-slate-400">
+                <span>📁 menu/${doc.filename}</span>
+                <span>•</span>
+                <span>${doc.pages || '1 Hal'}</span>
+              </div>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Select Document to Display
+    function selectDocument(id) {
+      const doc = currentDocs.find(d => d.id === id);
+      if (!doc) return;
+
+      activeDoc = doc;
+      renderSidebar();
+
+      // Update Toolbar Header
+      activeDocTitle.textContent = doc.name;
+      activeDocDesc.textContent = doc.description || doc.role;
+      
+      const isPdf = doc.type === 'pdf' || doc.filename.endsWith('.pdf');
+      activeDocBadge.textContent = isPdf ? 'PDF DOCUMENT' : 'HTML FORMAT';
+      activeDocBadge.className = isPdf 
+        ? 'text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-red-100 text-red-700'
+        : 'text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700';
+
+      btnOpenNewTab.href = doc.path;
+
+      // Show loader
+      iframeLoader.style.opacity = '1';
+      docFrame.src = doc.path;
+
+      docFrame.onload = () => {
+        iframeLoader.style.opacity = '0';
+        try {
+          // Adjust iframe height automatically for smooth view
+          const iframeDoc = docFrame.contentDocument || docFrame.contentWindow.document;
+          if (iframeDoc && iframeDoc.body) {
+            const contentHeight = Math.max(iframeDoc.body.scrollHeight, iframeDoc.documentElement.scrollHeight);
+            if (contentHeight > 500) {
+              docFrame.style.height = (contentHeight + 40) + 'px';
+            }
+          }
+        } catch (e) {
+          // Cross-origin fallback
+          docFrame.style.height = '1400px';
+        }
+      };
+
+      // Close mobile sidebar after selection
+      if (window.innerWidth < 768) {
+        sidebar.classList.add('-translate-x-full');
+      }
+    }
+
+    // Zoom Controls
+    function updateZoom(newZoom) {
+      currentZoom = Math.min(Math.max(newZoom, 0.5), 1.8);
+      zoomLabel.textContent = `${Math.round(currentZoom * 100)}%`;
+      sheetWrapper.style.transform = `scale(${currentZoom})`;
+    }
+
+    document.getElementById('btnZoomIn').addEventListener('click', () => updateZoom(currentZoom + 0.1));
+    document.getElementById('btnZoomOut').addEventListener('click', () => updateZoom(currentZoom - 0.1));
+    document.getElementById('btnZoomReset').addEventListener('click', () => updateZoom(1.0));
+
+    // Print Document
+    document.getElementById('btnPrint').addEventListener('click', () => {
+      try {
+        if (docFrame.contentWindow) {
+          docFrame.contentWindow.focus();
+          docFrame.contentWindow.print();
+        } else {
+          window.open(activeDoc.path, '_blank').print();
+        }
+      } catch (e) {
+        window.open(activeDoc.path, '_blank');
+      }
+    });
+
+    // Search and Filter Events
+    searchInput.addEventListener('input', () => renderSidebar());
+
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-pill').forEach(b => {
+          b.className = 'filter-pill px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 hover:bg-slate-200';
+        });
+        e.target.className = 'filter-pill active px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs';
+        currentFilter = e.target.getAttribute('data-filter');
+        renderSidebar();
+      });
+    });
+
+    // Refresh button
+    document.getElementById('btnRefreshMenu').addEventListener('click', () => {
+      loadMenuFiles();
+    });
+
+    // Toggle Sidebar
+    const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+    btnToggleSidebar.addEventListener('click', () => {
+      if (window.innerWidth < 768) {
+        sidebar.classList.toggle('-translate-x-full');
+      } else {
+        sidebar.classList.toggle('hidden');
+      }
+    });
+
+    document.getElementById('btnToggleSidebarMobile').addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+    });
+
+    // Handle responsive initial state
+    function checkResponsive() {
+      if (window.innerWidth < 768) {
+        sidebar.classList.add('fixed', 'inset-y-0', 'left-0', '-translate-x-full');
+      } else {
+        sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', '-translate-x-full', 'hidden');
+      }
+    }
+    window.addEventListener('resize', checkResponsive);
+    checkResponsive();
+
+    // Initialize
+    loadMenuFiles();
+  </script>
+</body>
+</html>
+

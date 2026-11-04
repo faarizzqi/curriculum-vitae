@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ridho Farizqi - CV</title>
+  <style>
+    /* Format sesuai template 2025-template_bullet.docx (Harvard Resume Style) */
+    @page {
+      size: letter;
+      margin: 0.5in 0.45in 0.4in 0.45in;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.25;
+      color: #000000;
+      background-color: #f3f4f6;
+      padding: 20px 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Floating Toolbar untuk kemudahan cetak */
+    .toolbar {
+      max-width: 8.5in;
+      margin: 0 auto 12px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 9.5pt;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-print {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 9pt;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-print:hover {
+      background: #2563eb;
+    }
+
+    /* Container Halaman Sesuai Ukuran Kertas Template */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 0.5in 0.45in 0.45in 0.45in;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 11pt;
+    }
+
+    .name {
+      font-size: 15pt;
+      font-weight: bold;
+      text-transform: none;
+      margin-bottom: 3pt;
+      color: #000000;
+      letter-spacing: -0.01em;
+    }
+
+    .name-line {
+      border: none;
+      border-top: 1px solid #000000;
+      margin: 4pt 0 5pt 0;
+      width: 100%;
+    }
+
+    .contact-line {
+      font-size: 10pt;
+      color: #000000;
+      line-height: 1.35;
+    }
+
+    .contact-line a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    .sub-contact {
+      font-size: 9.5pt;
+      margin-top: 2pt;
+      color: #222222;
+    }
+
+    /* SECTION HEADINGS - CENTERED & BOLD DENGAN VARIASI GARIS KANAN-KIRI */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-weight: bold;
+      font-size: 11pt;
+      text-transform: none;
+      margin-top: 10pt;
+      margin-bottom: 4pt;
+      color: #000000;
+    }
+
+    .section-heading::before,
+    .section-heading::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #000000;
+    }
+
+    .section-heading::before {
+      margin-right: 12px;
+    }
+
+    .section-heading::after {
+      margin-left: 12px;
+    }
+
+    /* SUMMARY PARAGRAPH */
+    .summary-content {
+      font-size: 10pt;
+      line-height: 1.35;
+      text-align: justify;
+      margin-bottom: 6pt;
+    }
+
+    .summary-content p {
+      margin-bottom: 4pt;
+    }
+
+    .summary-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ROW DUA KOLOM (Kiri: Org/Posisi, Kanan: Kota/Tanggal) */
+    .entry {
+      margin-bottom: 6pt;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10.5pt;
+    }
+
+    .left-bold {
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .left-normal {
+      font-weight: normal;
+      color: #000000;
+    }
+
+    .right-text {
+      text-align: right;
+      white-space: nowrap;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    .right-bold {
+      text-align: right;
+      white-space: nowrap;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    /* BULLET LIST SESUAI ListParagraph TEMPLATE */
+    ul.bullet-list {
+      list-style-type: disc;
+      margin-left: 19pt;
+      padding-left: 0;
+      margin-top: 2pt;
+      margin-bottom: 4pt;
+    }
+
+    ul.bullet-list li {
+      font-size: 10pt;
+      line-height: 1.35;
+      margin-bottom: 2pt;
+      text-align: justify;
+      color: #000000;
+    }
+
+    ul.bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .coursework {
+      font-size: 10pt;
+      line-height: 1.35;
+      margin-top: 2pt;
+      text-align: justify;
+    }
+
+    /* SKILLS & INTERESTS SECTION */
+    .skills-block {
+      margin-top: 2pt;
+    }
+
+    .skill-line {
+      font-size: 10pt;
+      line-height: 1.35;
+      margin-bottom: 2.5pt;
+      text-align: justify;
+    }
+
+    .skill-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      font-weight: bold;
+    }
+
+    /* PRINT RULES */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .page {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      .entry, .section-heading, .skill-line {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOATING TOOLBAR -->
+  <div class="toolbar">
+    <span>Format Mengikuti: <strong>2025-template_bullet.docx</strong></span>
+    <button class="btn-print" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Cetak / Simpan PDF (Ctrl + P)
+    </button>
+  </div>
+
+  <!-- DOCUMENT PAGE -->
+  <div class="page">
+
+    <!-- HEADER (P1 & P6 TEMPLATE) -->
+    <div class="header">
+      <div class="name">RIDHO FARIZQI</div>
+      <hr class="name-line">
+      <div class="contact-line">
+        Kendal, Jawa Tengah 51381 • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
+      </div>
+      <div class="sub-contact">
+        Status: Available Immediately
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section-heading">Summary</div>
+    <div class="summary-content">
+      <p>
+        Lulusan S1 Sistem Informasi Universitas Dian Nuswantoro (IPK 3.52) dengan latar belakang teknologi informasi berkesinambungan sejak SMK Rekayasa Perangkat Lunak. Memiliki keunggulan utama dalam analisis alur kerja (workflow analysis), berpikir logis-kritis, dan ketelitian tinggi (detail-oriented) dalam membedah kebutuhan bisnis. Memandang penulisan kode bukan sekadar sintaks, melainkan penerjemahan logika bisnis dan struktur sistem ke dalam solusi terukur. Menerapkan paradigma modern dengan memanfaatkan Artificial Intelligence (AI) secara strategis sebagai akselerator eksekusi kode, di mana kendali arsitektur, verifikasi fungsional, dan integritas logika tetap dipegang teguh berbasis fondasi pemahaman sistem yang kuat.
+      </p>
+      <p>
+        Tersertifikasi kompetensi profesi nasional oleh BNSP sebagai Associate Data Scientist. Berpengalaman merancang pipeline machine learning end-to-end (CRISP-DM) pada domain healthcare dengan capaian Akurasi 93.29% dan ROC-AUC 97.15%, serta implementasi Explainable AI (SHAP) untuk transparansi keputusan klinis model. Didukung pengalaman operasional IT Support di rumah sakit menangani troubleshooting hardware, software, jaringan LAN, backup data, serta administrasi sistem Electronic Medical Record (EMR). Rekam jejak profesional dan repositori kode lengkap dapat ditinjau melalui <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">LinkedIn</a> dan <a href="https://github.com/frizzen10" target="_blank">GitHub</a>.
+      </p>
+    </div>
+
+    <!-- EDUCATION (P8 - P17 TEMPLATE) -->
+    <div class="section-heading">Education</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Universitas Dian Nuswantoro</span>
+        <span class="right-text">Semarang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Sarjana (S1) Sistem Informasi, IPK: 3.52 / 4.00 (Cum Laude)</span>
+        <span class="right-text">Sep 2022 – Feb 2026</span>
+      </div>
+      <div class="coursework" style="margin-top: 1pt;">
+        <strong>Skripsi:</strong> Prediksi Risiko Diabetes &amp; Interpretabilitas Model Menggunakan LightGBM dan Explainable AI (SHAP)
+      </div>
+      <div class="coursework" style="margin-top: 1pt;">
+        <strong>Relevant Coursework:</strong> Algoritma &amp; Pemrograman, Analisa &amp; Perancangan Sistem Informasi, Data Mining, Manajemen Big Data, Implementasi &amp; Pengujian Sistem, Pemrograman Web, Analitika Media Sosial, Manajemen Basis Data.
+      </div>
+    </div>
+
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">SMKN 3 Kendal</span>
+        <span class="right-text">Kendal, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Rekayasa Perangkat Lunak (Software Engineering)</span>
+        <span class="right-text">Jul 2019 – Jun 2022</span>
+      </div>
+      <div class="coursework" style="margin-top: 1pt;">
+        <strong>Fokus Keahlian:</strong> Logika Pemrograman, Perakitan Komputer, Instalasi OS, dan Siklus Pengembangan Web (PHP &amp; MySQL).
+      </div>
+    </div>
+
+    <!-- EXPERIENCE (P19 - P35 TEMPLATE) -->
+    <div class="section-heading">Experience</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Rumah Sakit Harapan Magelang</span>
+        <span class="right-text">Magelang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-bold">IT Support (Intern)</span>
+        <span class="right-text">Feb 2025 – Mar 2025</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Menangani dan menyelesaikan 2–3 laporan teknis mandiri per hari serta >5 laporan kolaboratif bersama tim, mencakup troubleshooting hardware (PC workstation, laptop, printer kantor) dan software aplikasi.</li>
+        <li>Melakukan instalasi, standardisasi sistem operasi Windows, konfigurasi perangkat lunak kerja, serta penarikan kabel jaringan LAN (UTP/RJ45) guna menjamin kesiapan perangkat operasional rumah sakit.</li>
+        <li>Menjalankan protokol disaster recovery melalui prosedur backup dan restore data rutin untuk meminimalisasi risiko kehilangan data kritis medis.</li>
+        <li>Bertindak sebagai administrator operasional sistem Electronic Medical Record (EMR), memverifikasi keakuratan alur input data medis, serta mendampingi tenaga kesehatan dan staf administrasi saat terjadi kendala sistem.</li>
+      </ul>
+    </div>
+
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">GSS Software House Semarang</span>
+        <span class="right-text">Semarang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-bold">Software Developer (Intern)</span>
+        <span class="right-text">Mei 2021 – Jul 2021</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Merancang dan mengembangkan aplikasi web administrasi internal secara mandiri sebagai proyek latihan selama masa praktik industri.</li>
+        <li>Membangun modul dashboard monitoring produksi dan pengelolaan data (CRUD) menggunakan PHP dan database relasional MySQL.</li>
+      </ul>
+    </div>
+
+    <!-- SELECTED PROJECTS (P36 - P42 TEMPLATE) -->
+    <div class="section-heading">Selected Projects</div>
+
+    <!-- PROJECT 1: SKRIPSI ML & XAI -->
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Diabetes Risk Prediction & Explainable AI (Skripsi)</span>
+        <span class="right-text">Sep 2025 – Feb 2026</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Penelitian Tugas Akhir — Domain Healthcare Data Analytics</span>
+        <span class="right-text">Python, LightGBM, SHAP, Scikit-learn</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Merancang dan mengeksekusi pipeline machine learning end-to-end berbasis metodologi CRISP-DM menggunakan data tabular indikator kesehatan diabetes.</li>
+        <li>Mengatasi masalah imbalanced data menggunakan teknik SMOTE-Tomek di dalam Scikit-learn Pipeline guna mencegah kebocoran data (data leakage) selama proses evaluasi.</li>
+        <li>Mengembangkan model klasifikasi LightGBM dengan capaian metrik evaluasi testing set: Akurasi 93.29%, Precision 98.08%, Recall 94.24%, dan ROC-AUC 97.15% (PR-AUC 99.64%).</li>
+        <li>Mengimplementasikan Explainable AI (XAI) melalui SHAP TreeExplainer (analisis beeswarm dan evaluasi lokal TP/TN) guna memfasilitasi transparansi faktor risiko klinis pasien bagi pengambil keputusan medis.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 2: STREAMLIT APP (BERBASIS SKRIPSI) -->
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">Interactive Diabetes Risk Assessment Dashboard</span>
+        <span class="right-text">2026 (In Development)</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Aplikasi Web Interaktif Berbasis Model Machine Learning Skripsi</span>
+        <span class="right-text">Python, Streamlit, LightGBM, SHAP</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Membangun aplikasi web interaktif berbasis Streamlit untuk menyajikan inferensi model machine learning prediksi risiko diabetes secara real-time.</li>
+        <li>Menyediakan antarmuka input data klinis dan kebiasaan hidup pasien secara dinamis dengan validasi terstruktur guna mempermudah simulasi skrining awal.</li>
+        <li>Mengintegrasikan visualisasi interpretabilitas model (SHAP force/waterfall plot) secara langsung ke dalam dashboard untuk menjelaskan kontribusi spesifik setiap fitur pasien secara transparan.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 3: SISTEM AKADEMIK & PMB ONLINE -->
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">Sistem Informasi Akademik (SIA) & PMB Online Terpadu</span>
+        <span class="right-text">2026</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Platform Web Layanan Akademik Perguruan Tinggi Terintegrasi</span>
+        <span class="right-text">PHP 8.2, PostgreSQL, Bootstrap 5, mPDF</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Merancang dan membangun platform web terpadu satu pintu (single-window platform) yang mengintegrasikan alur Penerimaan Mahasiswa Baru (PMB), Billing tagihan UKT, pengisian KRS, penawaran jadwal matakuliah, hingga entri nilai dan KHS.</li>
+        <li>Mengimplementasikan Role-Based Access Control (RBAC) granular dengan otentikasi terpusat untuk 5 peran pengguna: Superadmin, Admin TU, Dosen, Mahasiswa, dan Pendaftar PMB.</li>
+        <li>Merancang arsitektur basis data relasional 10 tabel ternormalisasi pada PostgreSQL (Neon Cloud DB) guna menjaga integritas data pokok dan pemisahan profil legal warga negara dari data fungsional akademik.</li>
+        <li>Mengembangkan otomasi alur pendaftar yang lulus seleksi dan lunas pembayaran langsung terkonversi menjadi mahasiswa resmi ber-NIM, serta otomasi cetak dokumen akademik (KHS dan berkas registrasi) menggunakan library mPDF.</li>
+      </ul>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section-heading">Certifications</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Certification Scheme of Associate Data Scientist</span>
+        <span class="right-text">Sep 2025 – Sep 2028</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Badan Nasional Sertifikasi Profesi (BNSP)</span>
+        <span class="right-text">Sertifikasi Standar Nasional</span>
+      </div>
+      <div class="coursework">
+        Sertifikasi yang memvalidasi kompetensi dasar dalam pengelolaan data, meliputi pengumpulan dan persiapan data, analisis data eksploratif, pemodelan, evaluasi, serta pembuatan visualisasi data sesuai kebutuhan industri.
+      </div>
+    </div>
+
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">IBM Machine Learning Capstone — Skor: 97%</span>
+        <span class="right-text">Nov 2025 – Present</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">IBM &amp; Coursera — <a href="https://www.coursera.org/account/accomplishments/certificate/1O00WGDKMIBN" target="_blank" style="text-decoration: underline;">Verifikasi Sertifikat</a></span>
+        <span class="right-text">Kredensial Online</span>
+      </div>
+      <div class="coursework">
+        Kompetensi: Membangun sistem rekomendasi (recommender systems) berbasis Python dengan algoritma KNN, PCA, dan Non-Negative Matrix Collaborative Filtering; Melatih neural network serta model regresi dan klasifikasi untuk prediksi rating kursus; Membandingkan performa berbagai algoritma machine learning dan evaluasi proyek rekan sejawat.
+      </div>
+    </div>
+
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">IBM Deep Learning and Reinforcement Learning — Skor: 90.2%</span>
+        <span class="right-text">Nov 2025 – Present</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">IBM &amp; Coursera — <a href="https://www.coursera.org/account/accomplishments/certificate/B0GBPDTCJN4B" target="_blank" style="text-decoration: underline;">Verifikasi Sertifikat</a></span>
+        <span class="right-text">Kredensial Online</span>
+      </div>
+      <div class="coursework">
+        Kompetensi: Artificial Neural Networks (ANN), Convolutional Neural Networks (CNN), Recurrent Neural Networks (RNN), Generative Model Architectures &amp; GANs, Transfer Learning, Model Optimization, Reinforcement Learning, Unsupervised Learning, serta Dimensionality Reduction.
+      </div>
+    </div>
+
+    <div class="entry" style="margin-top: 5pt;">
+      <div class="row">
+        <span class="left-bold">English Proficiency Assessment (EPA) — Skor: 483</span>
+        <span class="right-text">Jun 2025 – Jun 2027</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Center for Foreign Language Training (CFLT)</span>
+        <span class="right-text">Standar TOEFL ITP</span>
+      </div>
+      <div class="coursework">
+        Sertifikasi kemahiran berbahasa Inggris dengan format dan standar setara pengujian TOEFL ITP dengan capaian skor 483 yang memvalidasi kompetensi dasar dalam Listening Comprehension, Structure and Written Expression, serta Reading Comprehension.
+      </div>
+    </div>
+
+    <!-- SKILLS & INTERESTS (P43 - P47 TEMPLATE) -->
+    <div class="section-heading">Skills & Interests</div>
+    <div class="skills-block">
+      <div class="skill-line">
+        <span class="skill-label">Technical:</span> Python, SQL, PHP, JavaScript, Streamlit, LightGBM, Scikit-learn, Explainable AI (SHAP), SMOTE-Tomek, CRISP-DM, Pandas, NumPy, PostgreSQL, MySQL, Git/GitHub, Microsoft Excel (Basic), Google Colab, Jupyter Notebook.
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">IT Infrastructure:</span> Hardware Diagnostics & Troubleshooting (PC, Laptop, Printer), Windows OS Deployment, Pengkabelan LAN (RJ45/UTP), Konfigurasi Jaringan Dasar, Backup & Disaster Recovery, Administrasi Electronic Medical Record (EMR).
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Language:</span> Bahasa Indonesia (Native), English (EPA Score: 483 / TOEFL ITP Equivalent - Working Proficiency).
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Additional:</span> Status: Siap Bergabung Segera (Available Immediately).
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

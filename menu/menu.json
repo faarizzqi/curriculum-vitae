@@ -1,0 +1,51 @@
+[
+  {
+    "id": "cv",
+    "name": "Curriculum Vitae",
+    "filename": "cv.html",
+    "path": "menu/cv.html",
+    "role": "Ridho Farizqi - Comprehensive CV",
+    "type": "html",
+    "category": "Curriculum Vitae",
+    "pages": "Multi-page",
+    "date": "2026",
+    "description": "Dokumen riwayat hidup lengkap (Harvard Style) dengan floating toolbar cetak."
+  },
+  {
+    "id": "resume1",
+    "name": "Resume - Junior Data Analyst",
+    "filename": "resume1.html",
+    "path": "menu/resume1.html",
+    "role": "Junior Data Analyst",
+    "type": "html",
+    "category": "Resume",
+    "pages": "1 Page Optimized",
+    "date": "2026",
+    "description": "Resume terfokus pada kompetensi Data Analytics, Python, SQL, BI, dan Machine Learning."
+  },
+  {
+    "id": "resume2",
+    "name": "Resume - IT Support Specialist",
+    "filename": "resume2.html",
+    "path": "menu/resume2.html",
+    "role": "IT Support Specialist",
+    "type": "html",
+    "category": "Resume",
+    "pages": "1 Page Optimized",
+    "date": "2026",
+    "description": "Resume terfokus pada IT Support, Network Troubleshooting, System Maintenance, dan Helpdesk."
+  },
+  {
+    "id": "cv_pdf",
+    "name": "CV Farizqi (PDF)",
+    "filename": "cv.pdf",
+    "path": "menu/cv.pdf",
+    "role": "PDF Version",
+    "type": "pdf",
+    "category": "Dokumen PDF",
+    "pages": "PDF Document",
+    "date": "2026",
+    "description": "Versi PDF siap unduh dan cetak langsung."
+  }
+]
+

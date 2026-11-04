@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Ridho Farizqi - Junior Data Analyst</title>
+  <style>
+    /* Harvard Resume Style - Strictly Optimized for 1 Page */
+    @page {
+      size: letter;
+      margin: 0.3in 0.45in 0.3in 0.45in;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 8.9pt;
+      line-height: 1.18;
+      color: #000000;
+      background-color: #f3f4f6;
+      padding: 10px 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .toolbar {
+      max-width: 8.5in;
+      margin: 0 auto 8px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 8.5pt;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-print {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 8.2pt;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-print:hover {
+      background: #2563eb;
+    }
+
+    .page {
+      width: 8.5in;
+      height: 11in;
+      max-height: 11in;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 0.32in 0.45in 0.3in 0.45in;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 5pt;
+    }
+
+    .name {
+      font-size: 13.5pt;
+      font-weight: bold;
+      margin-bottom: 1.5pt;
+      color: #000000;
+      letter-spacing: -0.01em;
+    }
+
+    .name-line {
+      border: none;
+      border-top: 1px solid #000000;
+      margin: 2.5pt 0 3.5pt 0;
+      width: 100%;
+    }
+
+    .contact-line {
+      font-size: 8.8pt;
+      color: #000000;
+      line-height: 1.25;
+    }
+
+    .contact-line a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    .sub-contact {
+      font-size: 8.2pt;
+      margin-top: 1pt;
+      color: #222222;
+    }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-weight: bold;
+      font-size: 9.6pt;
+      text-transform: none;
+      margin-top: 4.5pt;
+      margin-bottom: 2pt;
+      color: #000000;
+    }
+
+    .section-heading::before,
+    .section-heading::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #000000;
+    }
+
+    .section-heading::before {
+      margin-right: 8px;
+    }
+
+    .section-heading::after {
+      margin-left: 8px;
+    }
+
+    /* SUMMARY */
+    .summary-content {
+      font-size: 8.6pt;
+      line-height: 1.2;
+      text-align: justify;
+      margin-bottom: 2pt;
+    }
+
+    /* ROW DUA KOLOM */
+    .entry {
+      margin-bottom: 3pt;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 8.9pt;
+    }
+
+    .left-bold {
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .left-normal {
+      font-weight: normal;
+      color: #000000;
+    }
+
+    .right-text {
+      text-align: right;
+      white-space: nowrap;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    /* BULLET LIST */
+    ul.bullet-list {
+      list-style-type: disc;
+      margin-left: 15pt;
+      padding-left: 0;
+      margin-top: 1pt;
+      margin-bottom: 1.5pt;
+    }
+
+    ul.bullet-list li {
+      font-size: 8.5pt;
+      line-height: 1.18;
+      margin-bottom: 1pt;
+      text-align: justify;
+      color: #000000;
+    }
+
+    ul.bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .coursework {
+      font-size: 8.5pt;
+      line-height: 1.18;
+      margin-top: 1pt;
+      text-align: justify;
+    }
+
+    /* SKILLS */
+    .skills-block {
+      margin-top: 1pt;
+    }
+
+    .skill-line {
+      font-size: 8.5pt;
+      line-height: 1.19;
+      margin-bottom: 1pt;
+      text-align: justify;
+    }
+
+    .skill-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      font-weight: bold;
+    }
+
+    /* PRINT RULES */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .page {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      .entry, .section-heading, .skill-line {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOATING TOOLBAR -->
+  <div class="toolbar">
+    <span>Target: <strong>Junior Data Analyst</strong> | Format: Harvard 1-Page Resume</span>
+    <button class="btn-print" onclick="window.print()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Cetak / Simpan PDF (Ctrl + P)
+    </button>
+  </div>
+
+  <!-- DOCUMENT PAGE -->
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="name">RIDHO FARIZQI</div>
+      <hr class="name-line">
+      <div class="contact-line">
+        Kendal, Jawa Tengah 51381 • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
+      </div>
+      <div class="sub-contact">
+        Status: Available Immediately
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section-heading">Summary</div>
+    <div class="summary-content">
+      Fresh Graduate S1 Sistem Informasi Universitas Dian Nuswantoro (IPK 3.52, Cum Laude) bersertifikasi kompetensi profesi BNSP sebagai Associate Data Scientist. Memiliki spesialisasi dalam analisis data end-to-end berbasis metodologi CRISP-DM, pemodelan prediktif machine learning (LightGBM, Scikit-learn), serta Explainable AI (SHAP) pada domain healthcare. Berpikir logis-kritis, detail-oriented, dan berorientasi pada penerjemahan logika bisnis ke dalam arsitektur data. Berpengalaman dalam validasi integritas data sistem Electronic Medical Record (EMR) rumah sakit serta perancangan aplikasi web analitik. Siap bergabung secepatnya (Available Immediately). Rekam jejak profesional dan repositori kode lengkap dapat ditinjau melalui <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">LinkedIn</a> dan <a href="https://github.com/frizzen10" target="_blank">GitHub</a>.
+    </div>
+
+    <!-- TECHNICAL SKILLS -->
+    <div class="section-heading">Technical Skills</div>
+    <div class="skills-block">
+      <div class="skill-line">
+        <span class="skill-label">Programming & Query:</span> Python (Pandas, NumPy, Scikit-learn, TensorFlow), SQL (PostgreSQL, MySQL), PHP, JavaScript.
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Data Science & ML:</span> CRISP-DM, Exploratory Data Analysis (EDA), Data Preprocessing, SMOTE-Tomek, LightGBM, Explainable AI (SHAP), Pipeline, Recommender Systems (KNN, PCA, Collaborative Filtering).
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Analytics Tools & Platforms:</span> Streamlit, Git/GitHub, Google Colab, Jupyter Notebook, Microsoft Excel (Basic).
+      </div>
+    </div>
+
+    <!-- SELECTED DATA SCIENCE & ANALYTICS PROJECTS -->
+    <div class="section-heading">Selected Data Science & Analytics Projects</div>
+
+    <!-- PROJECT 1: SKRIPSI ML & XAI -->
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Diabetes Risk Prediction & Explainable AI (Skripsi)</span>
+        <span class="right-text">Sep 2025 – Feb 2026</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Penelitian Tugas Akhir — Domain Healthcare Data Analytics</span>
+        <span class="right-text">Python, LightGBM, SHAP, Scikit-learn</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Merancang dan mengeksekusi pipeline machine learning end-to-end berbasis metodologi CRISP-DM pada dataset indikator diabetes tabular.</li>
+        <li>Menerapkan teknik SMOTE-Tomek di dalam Scikit-learn Pipeline guna mengatasi imbalanced data dan mencegah kebocoran data (zero data leakage) selama evaluasi.</li>
+        <li>Mengembangkan model klasifikasi LightGBM dengan capaian testing set: Akurasi 93.29%, Precision 98.08%, Recall 94.24%, dan ROC-AUC 97.15% (PR-AUC 99.64%).</li>
+        <li>Mengimplementasikan Explainable AI (SHAP TreeExplainer) untuk memvisualisasikan faktor risiko klinis pasien (global dan lokal) bagi pengambil keputusan medis.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 2: STREAMLIT APP -->
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Interactive Diabetes Risk Assessment Dashboard</span>
+        <span class="right-text">2026 (In Development)</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Aplikasi Web Interaktif Berbasis Model Machine Learning Skripsi</span>
+        <span class="right-text">Python, Streamlit, LightGBM, SHAP</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Membangun aplikasi web berbasis Streamlit untuk menyajikan inferensi model prediksi risiko diabetes secara real-time dengan validasi input pengguna terstruktur.</li>
+        <li>Mengintegrasikan visualisasi interpretabilitas model SHAP (waterfall/force plot) guna memberikan interpretasi lokal faktor risiko individual pasien.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 3: SISTEM AKADEMIK & PMB ONLINE -->
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Sistem Informasi Akademik (SIA) & PMB Online Terpadu</span>
+        <span class="right-text">2026</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Platform Web Layanan Akademik Perguruan Tinggi Terintegrasi</span>
+        <span class="right-text">PHP 8.2, PostgreSQL, Bootstrap 5, mPDF</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Merancang arsitektur basis data relasional 10 tabel ternormalisasi pada PostgreSQL (Neon Cloud DB) guna menjaga integritas data pokok dan pemisahan profil pengguna.</li>
+        <li>Mengintegrasikan alur bisnis PMB Online, penagihan UKT/Billing, KRS, serta modul otomasi cetak dokumen akademik (KHS) menggunakan mPDF.</li>
+      </ul>
+    </div>
+
+    <!-- WORK EXPERIENCE -->
+    <div class="section-heading">Work Experience</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Rumah Sakit Harapan Magelang</span>
+        <span class="right-text">Magelang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-bold">IT Support (Intern)</span>
+        <span class="right-text">Feb 2025 – Mar 2025</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Bertindak sebagai administrator sistem Electronic Medical Record (EMR), memverifikasi dan memvalidasi keakuratan alur input data medis operasional.</li>
+        <li>Menjalankan prosedur backup data rutin dan mitigasi risiko kehilangan data kritis, serta menangani 2–3 tiket teknis mandiri dan lebih dari 5 laporan harian tim.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">GSS Software House Semarang</span>
+        <span class="right-text">Semarang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-bold">Software Developer (Intern)</span>
+        <span class="right-text">Mei 2021 – Jul 2021</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Membangun modul dashboard monitoring produksi dan pengelolaan data (CRUD) menggunakan PHP dan database relasional MySQL.</li>
+      </ul>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section-heading">Education</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Universitas Dian Nuswantoro</span>
+        <span class="right-text">Semarang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Sarjana (S1) Sistem Informasi, IPK: 3.52 / 4.00 (Cum Laude)</span>
+        <span class="right-text">Sep 2022 – Feb 2026</span>
+      </div>
+      <div class="coursework">
+        Relevant Coursework: Data Mining, Manajemen Big Data, Analisa & Perancangan SI, Pemrograman Web, Manajemen Basis Data.
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section-heading">Certifications</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Certification Scheme of Associate Data Scientist</span>
+        <span class="right-text">Sep 2025 – Sep 2028</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Badan Nasional Sertifikasi Profesi (BNSP) — Sertifikasi Kompetensi Standar Nasional</span>
+        <span class="right-text">Terdaftar</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">IBM Machine Learning Capstone (Skor: 97%) & Deep Learning (Skor: 90.2%)</span>
+        <span class="right-text">Nov 2025 – Present</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">IBM & Coursera — Recommender Systems, Neural Networks, CNN, RNN, GANs, Transfer Learning</span>
+        <span class="right-text">Kredensial Online</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">English Proficiency Assessment (EPA) — Skor: 483</span>
+        <span class="right-text">Jun 2025 – Jun 2027</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Center for Foreign Language Training (CFLT) — Standar Pengujian TOEFL ITP</span>
+        <span class="right-text">Terverifikasi</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

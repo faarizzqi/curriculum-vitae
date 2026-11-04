@@ -34,18 +34,6 @@
     "pages": "1 Page Optimized",
     "date": "2026",
     "description": "Resume terfokus pada IT Support, Network Troubleshooting, System Maintenance, dan Helpdesk."
-  },
-  {
-    "id": "cv_pdf",
-    "name": "CV Farizqi (PDF)",
-    "filename": "cv.pdf",
-    "path": "menu/cv.pdf",
-    "role": "PDF Version",
-    "type": "pdf",
-    "category": "Dokumen PDF",
-    "pages": "PDF Document",
-    "date": "2026",
-    "description": "Versi PDF siap unduh dan cetak langsung."
   }
 ]
 

@@ -30,10 +30,13 @@
     /* Floating Toolbar untuk kemudahan cetak */
     .toolbar {
       max-width: 8.5in;
+      width: 100%;
       margin: 0 auto 12px auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
       background: #ffffff;
       padding: 8px 16px;
       border-radius: 6px;
@@ -64,6 +67,7 @@
     /* Container Halaman Sesuai Ukuran Kertas Template */
     .page {
       width: 8.5in;
+      max-width: 100%;
       min-height: 11in;
       margin: 0 auto;
       background: #ffffff;
@@ -247,12 +251,108 @@
       font-weight: bold;
     }
 
+    /* RESPONSIVE (TABLET & MOBILE) */
+    @media screen and (max-width: 850px) {
+      body {
+        padding: 12px 8px;
+      }
+
+      .toolbar {
+        width: 100%;
+        border-radius: 8px;
+        padding: 10px 14px;
+      }
+
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 24px 18px;
+        border-radius: 8px;
+      }
+    }
+
+    @media screen and (max-width: 580px) {
+      body {
+        padding: 8px 4px;
+        font-size: 10pt;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 8px;
+      }
+
+      .btn-print {
+        justify-content: center;
+        width: 100%;
+        padding: 8px 14px;
+      }
+
+      .page {
+        padding: 18px 12px;
+        border-radius: 6px;
+      }
+
+      .name {
+        font-size: 14pt;
+      }
+
+      .contact-line {
+        font-size: 9pt;
+        line-height: 1.45;
+        word-break: break-word;
+      }
+
+      .section-heading {
+        font-size: 10.5pt;
+        margin-top: 8pt;
+      }
+
+      .section-heading::before {
+        margin-right: 8px;
+      }
+
+      .section-heading::after {
+        margin-left: 8px;
+      }
+
+      .row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1px;
+        margin-bottom: 3pt;
+      }
+
+      .right-text, .right-bold {
+        text-align: left;
+        white-space: normal;
+        font-size: 9pt;
+        color: #4b5563;
+      }
+
+      ul.bullet-list {
+        margin-left: 14pt;
+      }
+
+      ul.bullet-list li {
+        font-size: 9.5pt;
+        text-align: left;
+      }
+
+      .summary-content, .coursework, .skill-line {
+        font-size: 9.5pt;
+        text-align: left;
+      }
+    }
+
     /* PRINT RULES */
     @media print {
       body {
-        background: #ffffff;
-        padding: 0;
-        margin: 0;
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
 
       .toolbar {
@@ -261,10 +361,29 @@
 
       .page {
         width: 100% !important;
+        max-width: none !important;
         margin: 0 !important;
         padding: 0 !important;
         box-shadow: none !important;
         border: none !important;
+      }
+
+      .row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+      }
+
+      .right-text, .right-bold {
+        text-align: right !important;
+        white-space: nowrap !important;
+        font-size: inherit !important;
+        color: #000000 !important;
+      }
+
+      .summary-content, ul.bullet-list li, .coursework, .skill-line {
+        text-align: justify !important;
       }
 
       .entry, .section-heading, .skill-line {

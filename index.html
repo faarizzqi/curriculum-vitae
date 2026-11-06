@@ -106,23 +106,26 @@
     </div>
   </aside>
 
+  <!-- MOBILE SIDEBAR BACKDROP -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-25 hidden md:hidden transition-opacity"></div>
+
   <!-- MAIN VIEWER CONTENT -->
   <main class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100">
     
     <!-- Top Action Toolbar -->
-    <header class="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between z-20 shadow-xs">
-      <div class="flex items-center gap-3">
+    <header class="bg-white border-b border-slate-200 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between z-20 shadow-xs">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
         <!-- Toggle Sidebar Button (Desktop/Mobile) -->
-        <button id="btnToggleSidebar" class="p-1.5 text-slate-600 hover:bg-slate-100 rounded-lg transition" title="Toggle Sidebar">
+        <button id="btnToggleSidebar" class="p-1.5 text-slate-600 hover:bg-slate-100 rounded-lg transition shrink-0" title="Toggle Sidebar">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
 
-        <div class="border-l border-slate-200 h-6"></div>
+        <div class="border-l border-slate-200 h-6 shrink-0"></div>
 
-        <div>
+        <div class="min-w-0">
           <div class="flex items-center gap-2">
-            <h2 id="activeDocTitle" class="font-semibold text-slate-900 text-sm md:text-base leading-tight">Memuat...</h2>
-            <span id="activeDocBadge" class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">HTML</span>
+            <h2 id="activeDocTitle" class="font-semibold text-slate-900 text-sm md:text-base leading-tight truncate max-w-[130px] sm:max-w-xs md:max-w-none">Memuat...</h2>
+            <span id="activeDocBadge" class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 shrink-0">HTML</span>
           </div>
           <p id="activeDocDesc" class="text-xs text-slate-500 truncate max-w-md hidden sm:block">Silakan pilih dokumen dari menu sebelah kiri</p>
         </div>
@@ -158,7 +161,7 @@
     </header>
 
     <!-- Document Canvas / Viewport -->
-    <div id="viewerContainer" class="flex-1 viewer-container overflow-auto p-4 md:p-8 flex justify-center items-start relative">
+    <div id="viewerContainer" class="flex-1 viewer-container overflow-auto p-2 sm:p-4 md:p-8 flex justify-center items-start relative">
       
       <!-- Loading Overlay -->
       <div id="iframeLoader" class="absolute inset-0 bg-slate-900/10 backdrop-blur-xs flex items-center justify-center z-10 transition-opacity duration-200 pointer-events-none opacity-0">
@@ -174,7 +177,7 @@
           id="docFrame" 
           src="about:blank" 
           class="w-full border-0 bg-white"
-          style="min-height: 1100px; height: 85vh;"
+          style="min-height: 500px; height: 85vh;"
           title="Dokumen Pratinjau"
         ></iframe>
       </div>
@@ -243,6 +246,7 @@
 
     // DOM Elements
     const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
     const documentList = document.getElementById('documentList');
     const docCount = document.getElementById('docCount');
     const activeDocTitle = document.getElementById('activeDocTitle');
@@ -366,25 +370,40 @@
 
       docFrame.onload = () => {
         iframeLoader.style.opacity = '0';
-        try {
-          // Adjust iframe height automatically for smooth view
-          const iframeDoc = docFrame.contentDocument || docFrame.contentWindow.document;
-          if (iframeDoc && iframeDoc.body) {
-            const contentHeight = Math.max(iframeDoc.body.scrollHeight, iframeDoc.documentElement.scrollHeight);
-            if (contentHeight > 500) {
-              docFrame.style.height = (contentHeight + 40) + 'px';
-            }
-          }
-        } catch (e) {
-          // Cross-origin fallback
-          docFrame.style.height = '1400px';
-        }
+        adjustIframeHeight();
       };
 
       // Close mobile sidebar after selection
       if (window.innerWidth < 768) {
-        sidebar.classList.add('-translate-x-full');
+        closeMobileSidebar();
       }
+    }
+
+    // Auto-adjust iframe height to fit document without extra inner scrollbars
+    function adjustIframeHeight() {
+      try {
+        const iframeDoc = docFrame.contentDocument || docFrame.contentWindow.document;
+        if (iframeDoc && iframeDoc.body) {
+          const contentHeight = Math.max(iframeDoc.body.scrollHeight, iframeDoc.documentElement.scrollHeight);
+          if (contentHeight > 300) {
+            docFrame.style.height = (contentHeight + 30) + 'px';
+          }
+        }
+      } catch (e) {
+        // Cross-origin fallback
+        docFrame.style.height = '1400px';
+      }
+    }
+
+    // Mobile Sidebar Drawer Helpers
+    function openMobileSidebar() {
+      sidebar.classList.remove('-translate-x-full');
+      sidebarBackdrop.classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
     }
 
     // Zoom Controls
@@ -435,25 +454,38 @@
     const btnToggleSidebar = document.getElementById('btnToggleSidebar');
     btnToggleSidebar.addEventListener('click', () => {
       if (window.innerWidth < 768) {
-        sidebar.classList.toggle('-translate-x-full');
+        if (sidebar.classList.contains('-translate-x-full')) {
+          openMobileSidebar();
+        } else {
+          closeMobileSidebar();
+        }
       } else {
         sidebar.classList.toggle('hidden');
       }
     });
 
     document.getElementById('btnToggleSidebarMobile').addEventListener('click', () => {
-      sidebar.classList.add('-translate-x-full');
+      closeMobileSidebar();
+    });
+
+    sidebarBackdrop.addEventListener('click', () => {
+      closeMobileSidebar();
     });
 
     // Handle responsive initial state
     function checkResponsive() {
       if (window.innerWidth < 768) {
         sidebar.classList.add('fixed', 'inset-y-0', 'left-0', '-translate-x-full');
+        sidebarBackdrop.classList.add('hidden');
       } else {
         sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', '-translate-x-full', 'hidden');
+        sidebarBackdrop.classList.add('hidden');
       }
     }
-    window.addEventListener('resize', checkResponsive);
+    window.addEventListener('resize', () => {
+      checkResponsive();
+      adjustIframeHeight();
+    });
     checkResponsive();
 
     // Initialize

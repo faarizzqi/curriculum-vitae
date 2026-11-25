@@ -283,7 +283,6 @@
         background: #ffffff !important;
         padding: 0 !important;
         margin: 0 !important;
-        zoom: 1 !important;
       }
 
       .toolbar {
@@ -335,7 +334,13 @@
   <!-- FLOATING TOOLBAR -->
   <div class="toolbar">
     <span>Format Mengikuti: <strong>2025-template_bullet.docx</strong></span>
-    <button class="btn-print" onclick="window.print()">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <span style="font-size: 8pt; color: #4b5563;">Skala:</span>
+      <button type="button" onclick="changeDocScale(-0.05)" style="padding: 1px 6px; font-weight: bold; border: 1px solid #d1d5db; background: #fff; border-radius: 3px; cursor: pointer;">-</button>
+      <span id="docScaleLabel" style="min-width: 36px; text-align: center; font-family: monospace; font-size: 8.5pt;">100%</span>
+      <button type="button" onclick="changeDocScale(0.05)" style="padding: 1px 6px; font-weight: bold; border: 1px solid #d1d5db; background: #fff; border-radius: 3px; cursor: pointer;">+</button>
+    </div>
+    <button class="btn-print" onclick="printDoc()">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="6 9 6 2 18 2 18 9"></polyline>
         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
@@ -599,5 +604,28 @@
 
   </div>
 
+  <script>
+    let activeScale = 1.0;
+    function changeDocScale(delta) {
+      activeScale = Math.round(Math.min(Math.max(activeScale + delta, 0.40), 1.50) * 100) / 100;
+      const label = document.getElementById('docScaleLabel');
+      if (label) label.textContent = Math.round(activeScale * 100) + '%';
+      document.body.style.zoom = activeScale;
+      applyPrintScale(activeScale);
+    }
+    function applyPrintScale(scale) {
+      let st = document.getElementById('print-scale-style');
+      if (!st) {
+        st = document.createElement('style');
+        st.id = 'print-scale-style';
+        document.head.appendChild(st);
+      }
+      st.textContent = '@media print { body { zoom: ' + scale + ' !important; } }';
+    }
+    function printDoc() {
+      applyPrintScale(activeScale);
+      window.print();
+    }
+  </script>
 </body>
 </html>

@@ -40,31 +40,31 @@
 
         <!-- Direct Actions -->
         <div class="flex items-center gap-1.5 sm:gap-2">
-          <!-- Canvas Zoom Controller (A4 / Fit / Zoom) -->
+          <!-- Canvas Zoom Controller -->
           <div class="inline-flex items-center rounded-md border border-slate-300 bg-white p-0.5 text-xs text-slate-700 shadow-xs">
             <button 
               id="btnZoomOut" 
               type="button" 
               class="w-7 h-7 flex items-center justify-center font-bold hover:bg-slate-100 rounded text-slate-600 hover:text-slate-900 transition cursor-pointer" 
-              title="Perkecil (Zoom Out)"
-              aria-label="Perkecil Kanvas"
+              title="Perkecil (-5%)"
+              aria-label="Perkecil Skala"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
             </button>
             <button 
               id="btnZoomFit" 
               type="button" 
-              class="px-2 h-7 flex items-center justify-center text-[11px] font-mono text-slate-700 hover:bg-slate-100 rounded transition cursor-pointer select-none min-w-[46px] text-center" 
-              title="Klik untuk Fit Layar / Ukuran 100%"
+              class="px-1.5 h-7 flex items-center justify-center text-[11px] font-mono text-slate-700 hover:bg-slate-100 rounded transition cursor-pointer select-none min-w-[42px] text-center" 
+              title="Klik untuk reset ukuran (100%)"
             >
-              <span id="zoomLabel">Fit</span>
+              <span id="zoomLabel">100%</span>
             </button>
             <button 
               id="btnZoomIn" 
               type="button" 
               class="w-7 h-7 flex items-center justify-center font-bold hover:bg-slate-100 rounded text-slate-600 hover:text-slate-900 transition cursor-pointer" 
-              title="Perbesar (Zoom In)"
-              aria-label="Perbesar Kanvas"
+              title="Perbesar (+5%)"
+              aria-label="Perbesar Skala"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
             </button>
@@ -159,7 +159,6 @@
 
     let activeDocId = "cv";
     let currentZoom = 1.0;
-    let isFitMode = false;
 
     const docTabs = document.getElementById("docTabs");
     const docFrame = document.getElementById("docFrame");
@@ -184,44 +183,51 @@
         const frameDoc = docFrame.contentDocument || docFrame.contentWindow.document;
         if (frameDoc && frameDoc.body) {
           frameDoc.body.style.zoom = currentZoom;
+
+          // Sinkronisasi skala ke @media print agar hasil cetak/PDF mengikuti persentase skala yang aktif
+          let printStyle = frameDoc.getElementById('print-scale-style');
+          if (!printStyle) {
+            printStyle = frameDoc.createElement('style');
+            printStyle.id = 'print-scale-style';
+            frameDoc.head.appendChild(printStyle);
+          }
+          printStyle.textContent = `@media print { body { zoom: ${currentZoom} !important; } }`;
         }
-        if (isFitMode) {
-          zoomLabel.textContent = "Fit";
-        } else {
-          zoomLabel.textContent = `${Math.round(currentZoom * 100)}%`;
-        }
+        zoomLabel.textContent = `${Math.round(currentZoom * 100)}%`;
       } catch (err) {
         console.warn("Zoom error:", err);
       }
     }
 
-    function setZoom(newScale, fitState = false) {
-      isFitMode = fitState;
+    function setZoom(newScale) {
       currentZoom = Math.round(Math.min(Math.max(newScale, 0.30), 2.0) * 100) / 100;
       applyZoomToFrame();
     }
 
     btnZoomOut.addEventListener("click", () => {
-      setZoom(currentZoom - 0.10, false);
+      setZoom(currentZoom - 0.05);
     });
 
     btnZoomIn.addEventListener("click", () => {
-      setZoom(currentZoom + 0.10, false);
+      setZoom(currentZoom + 0.05);
     });
 
     btnZoomFit.addEventListener("click", () => {
-      if (isFitMode || currentZoom < 0.95) {
-        // Toggle to 100% actual size
-        setZoom(1.0, false);
+      const fit = calculateFitScale();
+      // Jika skala saat ini bukan 100%, reset ke 100%. Jika sudah 100% di layar kecil, toggle ke skala fit
+      if (Math.abs(currentZoom - 1.0) > 0.02) {
+        setZoom(1.0);
+      } else if (window.innerWidth < 850) {
+        setZoom(fit);
       } else {
-        // Toggle to Fit to Screen
-        setZoom(calculateFitScale(), true);
+        setZoom(1.0);
       }
     });
 
     window.addEventListener("resize", () => {
-      if (isFitMode) {
-        setZoom(calculateFitScale(), true);
+      // Auto re-fit hanya jika skala saat ini mendekati fit sebelumnya di mobile
+      if (window.innerWidth < 850 && currentZoom < 0.85) {
+        setZoom(calculateFitScale());
       }
     });
 
@@ -262,17 +268,17 @@
             const innerToolbar = frameDoc.querySelector('.toolbar');
             if (innerToolbar) innerToolbar.style.display = 'none';
 
-            // Double click anywhere on document toggles between Fit and 100%
+            // Double click anywhere on document toggles between 100% and fit
             frameDoc.addEventListener('dblclick', () => {
               btnZoomFit.click();
             });
           }
 
-          // Mobile defaults to Fit, Desktop defaults to 100%
+          // Mobile defaults to calculated scale percentage, Desktop defaults to 100%
           if (window.innerWidth < 850) {
-            setZoom(calculateFitScale(), true);
+            setZoom(calculateFitScale());
           } else {
-            setZoom(1.0, false);
+            setZoom(1.0);
           }
         } catch (e) {
           // Cross-origin fallback
@@ -283,6 +289,7 @@
     btnPrint.addEventListener('click', () => {
       try {
         if (docFrame.contentWindow) {
+          applyZoomToFrame();
           docFrame.contentWindow.focus();
           docFrame.contentWindow.print();
         } else {

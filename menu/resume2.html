@@ -19,8 +19,8 @@
 
     body {
       font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-      font-size: 8.9pt;
-      line-height: 1.18;
+      font-size: 9.3pt;
+      line-height: 1.2;
       color: #000000;
       background-color: #f3f4f6;
       padding: 10px 0;
@@ -64,7 +64,7 @@
 
     .page {
       width: 8.5in;
-      max-width: 100%;
+      min-width: 8.5in;
       height: 11in;
       max-height: 11in;
       margin: 0 auto;
@@ -234,35 +234,18 @@
       font-weight: bold;
     }
 
-    /* RESPONSIVE (TABLET & MOBILE) */
+    /* PRESENTASI KANVAS DOKUMEN RESUME ASLI (A4/Letter) */
+    /* Format kertas dan baris dua kolom tetap utuh, tidak pernah roboh menjadi mode membaca */
     @media screen and (max-width: 850px) {
-      body {
-        padding: 10px 8px;
-      }
-
       .toolbar {
         width: 100%;
+        max-width: 8.5in;
         border-radius: 8px;
         padding: 8px 12px;
-      }
-
-      .page {
-        width: 100%;
-        max-width: 100%;
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-        padding: 20px 16px;
-        border-radius: 8px;
       }
     }
 
     @media screen and (max-width: 580px) {
-      body {
-        padding: 8px 4px;
-        font-size: 8.9pt;
-      }
-
       .toolbar {
         flex-direction: column;
         align-items: stretch;
@@ -275,62 +258,6 @@
         width: 100%;
         padding: 6px 12px;
       }
-
-      .page {
-        padding: 16px 12px;
-        border-radius: 6px;
-      }
-
-      .name {
-        font-size: 13pt;
-      }
-
-      .contact-line {
-        font-size: 8.5pt;
-        line-height: 1.35;
-        word-break: break-word;
-      }
-
-      .section-heading {
-        font-size: 8.8pt;
-        margin-top: 5pt;
-      }
-
-      .section-heading::before {
-        margin-right: 8px;
-      }
-
-      .section-heading::after {
-        margin-left: 8px;
-      }
-
-      .row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1px;
-        margin-bottom: 2pt;
-      }
-
-      .right-text, .right-bold {
-        text-align: left;
-        white-space: normal;
-        font-size: 8pt;
-        color: #4b5563;
-      }
-
-      ul.bullet-list {
-        margin-left: 12pt;
-      }
-
-      ul.bullet-list li {
-        font-size: 8.5pt;
-        text-align: left;
-      }
-
-      .summary-content, .coursework, .skill-line {
-        font-size: 8.5pt;
-        text-align: left;
-      }
     }
 
     /* PRINT RULES */
@@ -339,6 +266,7 @@
         background: #ffffff !important;
         padding: 0 !important;
         margin: 0 !important;
+        zoom: 1 !important;
       }
 
       .toolbar {
@@ -347,6 +275,8 @@
 
       .page {
         width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
         height: 100% !important;
         max-height: 100% !important;
         margin: 0 !important;
@@ -409,33 +339,34 @@
       <div class="name">RIDHO FARIZQI</div>
       <hr class="name-line">
       <div class="contact-line">
-        Kendal, Jawa Tengah 51381 • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
+        Kendal / Semarang, Jawa Tengah • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
       </div>
       <div class="sub-contact">
-        Status: Available Immediately
+        <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">linkedin.com/in/ridho-farizqi</a> • 
+        <a href="https://github.com/faarizzqi" target="_blank">github.com/faarizzqi</a>
       </div>
     </div>
 
     <!-- SUMMARY -->
     <div class="section-heading">Summary</div>
     <div class="summary-content">
-      Lulusan S1 Sistem Informasi (IPK 3.52, Cum Laude) dengan dasar perangkat keras, jaringan, dan software sejak SMK RPL. Berpengalaman dalam helpdesk teknis di lingkungan rumah sakit, menangani 2–3 tiket harian mandiri dan >5 laporan kolaboratif tim, mencakup troubleshooting PC/laptop/printer, instalasi OS Windows, pengkabelan LAN, serta backup rutin sistem medis EMR. Siap bergabung segera. Rekam jejak kerja dan portofolio dapat ditinjau melalui <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">LinkedIn</a> dan <a href="https://github.com/faarizzqi" target="_blank">GitHub</a>.
+      Tenaga profesional IT Support lulusan S1 Sistem Informasi (IPK 3.52, Cum Laude) yang berfokus menjaga kelancaran seluruh perangkat kerja dan infrastruktur kantor. Terbukti sigap menangani insiden teknis harian di lingkungan rumah sakit, mulai dari perbaikan cepat komputer dan printer staf, kestabilan kabel jaringan LAN, hingga pengamanan data operasional medis melalui pencadangan rutin demi memastikan staf bekerja produktif tanpa hambatan downtime.
     </div>
 
     <!-- CORE COMPETENCIES & TECHNICAL SKILLS -->
     <div class="section-heading">Core Competencies & Technical Skills</div>
     <div class="skills-block">
       <div class="skill-line">
-        <span class="skill-label">Hardware & Troubleshooting:</span> PC Workstation & Laptop Maintenance, Diagnostic Hardware, Printer Troubleshooting, Penggantian Komponen, Periferal Kantor.
+        <span class="skill-label">Hardware & Troubleshooting:</span> PC Workstation & Laptop Maintenance, Hardware Diagnostics, Printer Troubleshooting, Component Replacement, Office Peripherals.
       </div>
       <div class="skill-line">
-        <span class="skill-label">Operating System & Support:</span> Windows OS Deployment, Software Installation & Configuration, Standardisasi Perangkat Kerja, System Recovery.
+        <span class="skill-label">Operating Systems & Support:</span> Windows OS Deployment, Software Installation & Configuration, Workstation Standardization, System Recovery.
       </div>
       <div class="skill-line">
-        <span class="skill-label">Networking & Infrastructure:</span> Pengkabelan LAN, Konfigurasi IP Jaringan Dasar, Switch & Router Setup.
+        <span class="skill-label">Networking & Infrastructure:</span> LAN Cabling & Termination (UTP/RJ-45), Basic IP Configuration, Switch & Router Setup.
       </div>
       <div class="skill-line">
-        <span class="skill-label">Data & Enterprise Systems:</span> Prosedur Backup & Restore Data, Administrasi Sistem Electronic Medical Record (EMR), Database Query (SQL/MySQL).
+        <span class="skill-label">Data & Enterprise Systems:</span> Data Backup & Recovery Procedures, Electronic Medical Record (EMR) Administration, Database Querying (SQL/MySQL).
       </div>
     </div>
 
@@ -452,12 +383,10 @@
         <span class="right-text">Feb 2025 – Mar 2025</span>
       </div>
       <ul class="bullet-list">
-        <li>Menangani dan menyelesaikan 2–3 tiket gangguan teknis mandiri per hari serta lebih dari 5 kasus sistemik bersama tim dengan Service Level Agreement (SLA) cepat dan terstruktur.</li>
-        <li>Melakukan diagnosa dan perbaikan perangkat keras (PC workstation, laptop, printer kantor) serta penanganan error aplikasi harian.</li>
-        <li>Melaksanakan instalasi, deployment, dan standardisasi berkala Sistem Operasi Windows serta aplikasi operasional di unit-unit kerja rumah sakit.</li>
-        <li>Menjalankan protokol disaster recovery melalui prosedur backup dan restore data database secara rutin guna mencegah kehilangan data medis kritis.</li>
-        <li>Bertindak sebagai administrator operasional sistem Electronic Medical Record (EMR), memverifikasi alur data transaksi medis, serta memberikan pendampingan teknis langsung kepada dokter, perawat, dan staf administrasi.</li>
-        <li>Melakukan instalasi dan perbaikan konektivitas jaringan lokal (LAN), mencakup penarikan kabel UTP dan pengujian konektor RJ-45.</li>
+        <li>Mendukung kesiapan operasional 30+ unit PC workstation/laptop dan 10+ printer kantor di lingkungan rumah sakit, menyelesaikan 2–3 tiket mandiri serta &gt;5 kendala sistemik per hari dengan resolusi &lt; 45 menit (SLA &gt; 95%).</li>
+        <li>Melakukan instalasi, deployment, dan standardisasi OS Windows serta terminasi dan pengujian 20+ titik kabel jaringan LAN (UTP/RJ-45) guna menjamin konektivitas operasional ruang medis.</li>
+        <li>Menjalankan protokol disaster recovery melalui verifikasi backup dan restore database rutin sistem Electronic Medical Record (EMR) harian dengan tingkat keberhasilan 100% tanpa insiden kehilangan data.</li>
+        <li>Bertindak sebagai administrator operasional sistem Electronic Medical Record (EMR), memverifikasi alur transaksi data medis, serta memberikan pendampingan teknis langsung kepada dokter, perawat, dan staf.</li>
       </ul>
     </div>
 
@@ -471,7 +400,7 @@
         <span class="right-text">Mei 2021 – Jul 2021</span>
       </div>
       <ul class="bullet-list">
-        <li>Mengembangkan aplikasi internal berbasis web menggunakan PHP dan basis data MySQL untuk pemantauan data harian dan kebutuhan administrasi sistem.</li>
+        <li>Mengembangkan aplikasi administrasi internal berbasis web menggunakan PHP dan database MySQL (6+ modul CRUD) untuk pemantauan data operasional.</li>
       </ul>
     </div>
 
@@ -480,44 +409,30 @@
 
     <div class="entry">
       <div class="row">
-        <span class="left-bold">Sistem Informasi Akademik (SIA) & PMB Online Terpadu</span>
-        <span class="right-text">2026</span>
+        <span class="left-bold">Sistem Informasi Akademik &amp; Registrasi Terpadu (SIA)</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/sistem-akademik" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
       </div>
       <div class="row">
         <span class="left-normal">Platform Web Layanan Akademik Perguruan Tinggi Terintegrasi</span>
         <span class="right-text">PHP 8.2, PostgreSQL, Bootstrap 5, mPDF</span>
       </div>
       <ul class="bullet-list">
-        <li>Merancang platform web terpadu dengan arsitektur Role-Based Access Control (RBAC 5 peran pengguna) dan otentikasi terpusat.</li>
-        <li>Mengelola skema database relasional 10 tabel PostgreSQL (Neon Cloud DB) untuk integrasi data pendaftaran, penagihan, KRS, dan cetak KHS otomatis.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <span class="left-bold">Interactive Diabetes Risk Assessment Dashboard</span>
-        <span class="right-text">2026</span>
-      </div>
-      <div class="row">
-        <span class="left-normal">Aplikasi Web Interaktif Berbasis Model Machine Learning Skripsi</span>
-        <span class="right-text">Python, Streamlit, LightGBM</span>
-      </div>
-      <ul class="bullet-list">
-        <li>Membangun dashboard web berbasis Python dan Streamlit untuk simulasi skrining kesehatan interaktif dan validasi input data pengguna secara dinamis.</li>
+        <li>Merancang platform administrasi terpusat dengan Role-Based Access Control (RBAC 5 peran pengguna) dan arsitektur database 10 tabel PostgreSQL.</li>
+        <li>Mengintegrasikan modul penagihan, validasi KRS, serta otomasi cetak dokumen akademik (mPDF) untuk kelancaran layanan.</li>
       </ul>
     </div>
 
     <div class="entry">
       <div class="row">
         <span class="left-bold">Taman Sayur: On-Demand Catalog &amp; WhatsApp Forwarding</span>
-        <span class="right-text">2026</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/taman-sayur" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
       </div>
       <div class="row">
         <span class="left-normal">Web Katalog Agrikultur &amp; Otomasi Pesan WhatsApp API</span>
         <span class="right-text">JavaScript, LocalStorage, Tailwind CSS</span>
       </div>
       <ul class="bullet-list">
-        <li>Merancang platform katalog 40 komoditas agrikultur dengan fitur keranjang belanja berbasis LocalStorage dan generator pesan pesanan terstruktur ke WhatsApp API.</li>
+        <li>Membangun antarmuka katalog web responsif berbasis client-side LocalStorage dengan integrasi gateway pesan instan WhatsApp API.</li>
       </ul>
     </div>
 

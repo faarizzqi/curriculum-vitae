@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Ridho Farizqi - Staff IT</title>
+  <style>
+    /* Harvard Resume Style - Optimized for 1 Page */
+    @page {
+      size: letter;
+      margin: 0.32in 0.45in 0.3in 0.45in;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 9.3pt;
+      line-height: 1.2;
+      color: #000000;
+      background-color: #f3f4f6;
+      padding: 10px 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .toolbar {
+      max-width: 8.5in;
+      width: 100%;
+      margin: 0 auto 8px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 8.5pt;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-print {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 8.2pt;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-print:hover {
+      background: #2563eb;
+    }
+
+    .page {
+      width: 8.5in;
+      min-width: 8.5in;
+      height: 11in;
+      max-height: 11in;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 0.32in 0.45in 0.3in 0.45in;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 5pt;
+    }
+
+    .name {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 1.5pt;
+      color: #000000;
+      letter-spacing: -0.01em;
+    }
+
+    .name-line {
+      border: none;
+      border-top: 1px solid #000000;
+      margin: 2.5pt 0 3.5pt 0;
+      width: 100%;
+    }
+
+    .contact-line {
+      font-size: 9pt;
+      color: #000000;
+      line-height: 1.3;
+    }
+
+    .contact-line a, .sub-contact a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .contact-line a:hover, .sub-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .sub-contact {
+      font-size: 8.6pt;
+      margin-top: 1.5pt;
+      color: #111827;
+    }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-weight: bold;
+      font-size: 9.8pt;
+      text-transform: none;
+      margin-top: 5pt;
+      margin-bottom: 2.5pt;
+      color: #000000;
+    }
+
+    .section-heading::before,
+    .section-heading::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #000000;
+    }
+
+    .section-heading::before {
+      margin-right: 8px;
+    }
+
+    .section-heading::after {
+      margin-left: 8px;
+    }
+
+    /* SUMMARY */
+    .summary-content {
+      font-size: 9pt;
+      line-height: 1.25;
+      text-align: justify;
+      margin-bottom: 2pt;
+    }
+
+    /* ROW DUA KOLOM */
+    .entry {
+      margin-bottom: 3.5pt;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.2pt;
+    }
+
+    .left-bold {
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .left-normal {
+      font-weight: normal;
+      color: #000000;
+    }
+
+    .right-text {
+      text-align: right;
+      white-space: nowrap;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    /* BULLET LIST */
+    ul.bullet-list {
+      list-style-type: disc;
+      margin-left: 15pt;
+      padding-left: 0;
+      margin-top: 1pt;
+      margin-bottom: 2pt;
+    }
+
+    ul.bullet-list li {
+      font-size: 8.9pt;
+      line-height: 1.2;
+      margin-bottom: 1pt;
+      text-align: justify;
+      color: #000000;
+    }
+
+    ul.bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .coursework {
+      font-size: 8.8pt;
+      line-height: 1.2;
+      margin-top: 1pt;
+      text-align: justify;
+    }
+
+    /* SKILLS */
+    .skills-block {
+      margin-top: 1pt;
+    }
+
+    .skill-line {
+      font-size: 8.9pt;
+      line-height: 1.22;
+      margin-bottom: 1.5pt;
+      text-align: justify;
+    }
+
+    .skill-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      font-weight: bold;
+    }
+
+    /* PRESENTASI KANVAS DOKUMEN RESUME ASLI (A4/Letter) */
+    /* Format kertas dan baris dua kolom tetap utuh, tidak pernah roboh menjadi mode membaca */
+    @media screen and (max-width: 850px) {
+      .toolbar {
+        width: 100%;
+        max-width: 8.5in;
+        border-radius: 8px;
+        padding: 8px 12px;
+      }
+    }
+
+    @media screen and (max-width: 580px) {
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 8px;
+      }
+
+      .btn-print {
+        justify-content: center;
+        width: 100%;
+        padding: 6px 12px;
+      }
+    }
+
+    /* PRINT */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        zoom: 1 !important;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .page {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        overflow: hidden !important;
+      }
+      }
+      .row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+      }
+      .right-text {
+        text-align: right !important;
+        white-space: nowrap !important;
+        font-size: inherit !important;
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOATING TOOLBAR -->
+  <div class="toolbar">
+    <span>Target: <strong>Staff IT</strong> | Format: Harvard 1-Page Resume (ATS-Friendly)</span>
+    <button class="btn-print" onclick="window.print()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Cetak / Simpan PDF (Ctrl + P)
+    </button>
+  </div>
+
+  <!-- DOCUMENT PAGE -->
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="name">RIDHO FARIZQI</div>
+      <hr class="name-line">
+      <div class="contact-line">
+        Kendal / Semarang, Jawa Tengah • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
+      </div>
+      <div class="sub-contact">
+        <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">linkedin.com/in/ridho-farizqi</a> • 
+        <a href="https://github.com/faarizzqi" target="_blank">github.com/faarizzqi</a>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section-heading">Summary</div>
+    <div class="summary-content">
+      Lulusan S1 Sistem Informasi Universitas Dian Nuswantoro (IPK 3.52, Cum Laude) yang berfokus mendukung kelancaran ekosistem teknologi perusahaan secara menyeluruh. Mampu menjamin kesiapan perangkat kerja karyawan dan stabilitas jaringan kantor, memelihara aplikasi web administrasi internal, serta mengamankan basis data operasional melalui penataan hak akses pengguna. Sigap menjadi jembatan solusi teknis yang andal dan komunikatif bagi seluruh divisi kerja.
+    </div>
+
+    <!-- TECHNICAL & OPERATIONAL SKILLS -->
+    <div class="section-heading">Technical &amp; Operational Skills</div>
+    <div class="skills-block">
+      <div class="skill-line">
+        <span class="skill-label">IT Infrastructure &amp; Networking:</span> Hardware Troubleshooting &amp; Diagnostics (PC, Laptop, Printer), LAN Cabling &amp; Termination (UTP/RJ-45), LAN/WLAN Network Configuration, Switch &amp; Router Setup, Windows OS Deployment.
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Databases &amp; System Administration:</span> MySQL, PostgreSQL, SQL Querying, Relational Schema Design (3NF), User Access Management (RBAC), Data Backup &amp; Disaster Recovery.
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Applications &amp; Programming:</span> PHP, Python, JavaScript, HTML5/CSS3, Internal Web Architecture, REST API, Git/GitHub.
+      </div>
+      <div class="skill-line">
+        <span class="skill-label">Office Productivity &amp; IT Operations:</span> Microsoft Office (Word, Excel, PowerPoint), Helpdesk Ticket Resolution (SLA), Technical Documentation &amp; IT SOP.
+      </div>
+    </div>
+
+    <!-- WORK EXPERIENCE -->
+    <div class="section-heading">Work Experience</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Rumah Sakit Harapan Magelang</span>
+        <span class="right-text">Magelang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-bold">IT Support (Intern)</span>
+        <span class="right-text">Feb 2025 – Mar 2025</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Mendukung kesiapan operasional 30+ unit PC workstation, laptop, dan 10+ printer kantor di lingkungan rumah sakit, menyelesaikan 2–3 tiket harian mandiri serta &gt;5 kasus kolaboratif per hari dengan respon cepat (SLA &gt; 95%).</li>
+        <li>Melakukan instalasi dan standardisasi OS Windows, konfigurasi perangkat kerja, serta terminasi dan penarikan 20+ titik kabel LAN (UTP/RJ-45) guna menjamin konektivitas operasional stabil.</li>
+        <li>Menjalankan prosedur backup data rutin dan mitigasi risiko kehilangan data kritis operasional medis dengan tingkat keberhasilan 100%.</li>
+        <li>Bertindak sebagai administrator operasional sistem Electronic Medical Record (EMR), memverifikasi keakuratan alur input data transaksi, dan mendampingi staf saat terjadi kendala teknis.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">GSS Software House Semarang</span>
+        <span class="right-text">Semarang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-bold">Software Developer (Intern)</span>
+        <span class="right-text">Mei 2021 – Jul 2021</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Merancang dan membangun modul dashboard monitoring produksi dan administrasi data internal (6+ modul CRUD) menggunakan bahasa pemrograman PHP dan basis data MySQL.</li>
+      </ul>
+    </div>
+
+    <!-- RELEVANT TECHNICAL PROJECTS -->
+    <div class="section-heading">Relevant Technical Projects</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Sistem Informasi Akademik &amp; Registrasi Terpadu (SIA)</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/sistem-akademik" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Platform Web Layanan Akademik Perguruan Tinggi Terintegrasi</span>
+        <span class="right-text">PHP 8.2, PostgreSQL, Bootstrap 5, mPDF</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Membangun platform sistem informasi satu pintu dengan otentikasi Role-Based Access Control (RBAC 5 peran pengguna) dan arsitektur database 10 tabel PostgreSQL.</li>
+        <li>Mengintegrasikan modul penerimaan mahasiswa, penagihan UKT, dan otomasi cetak dokumen akademik (mPDF).</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Taman Sayur: Web Catalog &amp; WhatsApp Order System</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/taman-sayur" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Katalog Komoditas Agrikultur &amp; Otomasi Pesan WhatsApp API</span>
+        <span class="right-text">JavaScript, LocalStorage, Tailwind CSS</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Mengembangkan katalog web interaktif 40 komoditas produk dengan sistem keranjang belanja berbasis LocalStorage dan generator format pesan pemesanan otomatis ke WhatsApp API.</li>
+      </ul>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section-heading">Education</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Universitas Dian Nuswantoro (UDINUS)</span>
+        <span class="right-text">Semarang, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Sarjana (S1) Sistem Informasi, IPK: 3.52 / 4.00 (Cum Laude)</span>
+        <span class="right-text">Sep 2022 – Feb 2026</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">SMKN 3 Kendal</span>
+        <span class="right-text">Kendal, Jawa Tengah</span>
+      </div>
+      <div class="row">
+        <span class="left-normal">Rekayasa Perangkat Lunak (Software Engineering)</span>
+        <span class="right-text">Jul 2019 – Jun 2022</span>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS & ADDITIONAL -->
+    <div class="section-heading">Certifications &amp; Additional</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">Badan Nasional Sertifikasi Profesi (BNSP)</span>
+        <span class="right-text">Sertifikasi Kompetensi Standar Nasional</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="left-bold">English Proficiency Assessment (EPA) — Skor: 483</span>
+        <span class="right-text">CFLT (Standar TOEFL ITP)</span>
+      </div>
+      <div class="coursework" style="margin-top: 1.5pt;">
+        <strong>Additional:</strong> Active SIM C with personal vehicle (Semarang, Kendal &amp; surrounding areas).
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

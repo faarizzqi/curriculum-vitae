@@ -34,6 +34,18 @@
     "pages": "1 Page Optimized",
     "date": "2026",
     "description": "Resume terfokus pada IT Support, Network Troubleshooting, System Maintenance, dan Helpdesk."
+  },
+  {
+    "id": "resume3",
+    "name": "Resume - Staff IT",
+    "filename": "resume3.html",
+    "path": "menu/resume3.html",
+    "role": "Staff IT (Generalist)",
+    "type": "html",
+    "category": "Resume",
+    "pages": "1 Page Optimized",
+    "date": "2026",
+    "description": "Resume terfokus pada Corporate Staff IT: Jaringan LAN, Hardware, Database (SQL/MySQL), Pemrograman Web, dan Dukungan Operasional."
   }
 ]
 

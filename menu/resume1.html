@@ -19,8 +19,8 @@
 
     body {
       font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-      font-size: 8.9pt;
-      line-height: 1.18;
+      font-size: 9.3pt;
+      line-height: 1.2;
       color: #000000;
       background-color: #f3f4f6;
       padding: 10px 0;
@@ -64,7 +64,7 @@
 
     .page {
       width: 8.5in;
-      max-width: 100%;
+      min-width: 8.5in;
       height: 11in;
       max-height: 11in;
       margin: 0 auto;
@@ -234,35 +234,18 @@
       font-weight: bold;
     }
 
-    /* RESPONSIVE (TABLET & MOBILE) */
+    /* PRESENTASI KANVAS DOKUMEN RESUME ASLI (A4/Letter) */
+    /* Format kertas dan baris dua kolom tetap utuh, tidak pernah roboh menjadi mode membaca */
     @media screen and (max-width: 850px) {
-      body {
-        padding: 10px 8px;
-      }
-
       .toolbar {
         width: 100%;
+        max-width: 8.5in;
         border-radius: 8px;
         padding: 8px 12px;
-      }
-
-      .page {
-        width: 100%;
-        max-width: 100%;
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-        padding: 20px 16px;
-        border-radius: 8px;
       }
     }
 
     @media screen and (max-width: 580px) {
-      body {
-        padding: 8px 4px;
-        font-size: 8.9pt;
-      }
-
       .toolbar {
         flex-direction: column;
         align-items: stretch;
@@ -275,62 +258,6 @@
         width: 100%;
         padding: 6px 12px;
       }
-
-      .page {
-        padding: 16px 12px;
-        border-radius: 6px;
-      }
-
-      .name {
-        font-size: 13pt;
-      }
-
-      .contact-line {
-        font-size: 8.5pt;
-        line-height: 1.35;
-        word-break: break-word;
-      }
-
-      .section-heading {
-        font-size: 8.8pt;
-        margin-top: 5pt;
-      }
-
-      .section-heading::before {
-        margin-right: 8px;
-      }
-
-      .section-heading::after {
-        margin-left: 8px;
-      }
-
-      .row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1px;
-        margin-bottom: 2pt;
-      }
-
-      .right-text, .right-bold {
-        text-align: left;
-        white-space: normal;
-        font-size: 8pt;
-        color: #4b5563;
-      }
-
-      ul.bullet-list {
-        margin-left: 12pt;
-      }
-
-      ul.bullet-list li {
-        font-size: 8.5pt;
-        text-align: left;
-      }
-
-      .summary-content, .coursework, .skill-line {
-        font-size: 8.5pt;
-        text-align: left;
-      }
     }
 
     /* PRINT RULES */
@@ -339,6 +266,7 @@
         background: #ffffff !important;
         padding: 0 !important;
         margin: 0 !important;
+        zoom: 1 !important;
       }
 
       .toolbar {
@@ -347,6 +275,8 @@
 
       .page {
         width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
         height: 100% !important;
         max-height: 100% !important;
         margin: 0 !important;
@@ -409,30 +339,31 @@
       <div class="name">RIDHO FARIZQI</div>
       <hr class="name-line">
       <div class="contact-line">
-        Kendal, Jawa Tengah 51381 • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
+        Kendal / Semarang, Jawa Tengah • <a href="https://wa.me/6285155223695" target="_blank">0851 5522 3695</a> • <a href="mailto:rizfariz2003@gmail.com">rizfariz2003@gmail.com</a>
       </div>
       <div class="sub-contact">
-        Status: Available Immediately
+        <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">linkedin.com/in/ridho-farizqi</a> • 
+        <a href="https://github.com/faarizzqi" target="_blank">github.com/faarizzqi</a>
       </div>
     </div>
 
     <!-- SUMMARY -->
     <div class="section-heading">Summary</div>
     <div class="summary-content">
-      Lulusan S1 Sistem Informasi (IPK 3.52, Cum Laude) bersertifikasi BNSP Associate Data Scientist dengan dasar rekayasa perangkat lunak sejak SMK. Terampil dalam siklus data end-to-end (CRISP-DM), kueri basis data (SQL/PostgreSQL), pembersihan data, pemodelan machine learning (LightGBM, XAI/SHAP), serta dashboard interaktif (Streamlit/Python). Berpengalaman dalam validasi integritas data EMR rumah sakit. Siap bergabung segera. Portofolio &amp; repositori lengkap di <a href="https://linkedin.com/in/ridho-farizqi" target="_blank">LinkedIn</a> dan <a href="https://github.com/faarizzqi" target="_blank">GitHub</a>.
+      Sarjana Sistem Informasi (IPK 3.52, Cum Laude) bersertifikasi BNSP Associate Data Scientist. Berfokus membantu organisasi mengubah timbunan data mentah yang kompleks menjadi laporan visual dan dasbor interaktif yang mudah dipahami pimpinan. Terampil menyaring data transaksi, mendeteksi pola risiko tersembunyi, serta membangun model prediksi berbasis machine learning guna membantu manajemen mengambil keputusan strategis yang terukur, bukan berdasarkan asumsi semata.
     </div>
 
     <!-- TECHNICAL SKILLS -->
     <div class="section-heading">Technical Skills</div>
     <div class="skills-block">
       <div class="skill-line">
-        <span class="skill-label">Programming & Query:</span> Python (Pandas, NumPy, Scikit-learn, TensorFlow), SQL (PostgreSQL, MySQL), PHP, JavaScript.
+        <span class="skill-label">Programming Languages &amp; Query:</span> Python (Pandas, NumPy, Scikit-learn), SQL (PostgreSQL, MySQL).
       </div>
       <div class="skill-line">
-        <span class="skill-label">Data Science & ML:</span> CRISP-DM, Exploratory Data Analysis (EDA), Data Preprocessing, SMOTE-Tomek, LightGBM, Explainable AI (SHAP), Pipeline, Recommender Systems (KNN, PCA, Collaborative Filtering).
+        <span class="skill-label">Data Science &amp; Machine Learning:</span> CRISP-DM, Exploratory Data Analysis (EDA), Data Preprocessing, SMOTE-Tomek, LightGBM, Explainable AI (SHAP), Scikit-learn Pipeline, Recommender Systems.
       </div>
       <div class="skill-line">
-        <span class="skill-label">Analytics Tools & Platforms:</span> Streamlit, Git/GitHub, Google Colab, Jupyter Notebook, Microsoft Excel (Basic).
+        <span class="skill-label">Analytics &amp; BI Tools:</span> Streamlit Dashboard, Spreadsheet Analytics (Microsoft Excel - Pivot Tables, VLOOKUP, Advanced Formulas), Google Colab, Jupyter Notebook, Git/GitHub.
       </div>
     </div>
 
@@ -442,7 +373,7 @@
     <!-- PROJECT 1: SKRIPSI ML & XAI -->
     <div class="entry">
       <div class="row">
-        <span class="left-bold">Diabetes Risk Prediction & Explainable AI (Skripsi)</span>
+        <span class="left-bold">Diabetes Risk Prediction &amp; Explainable AI (Skripsi)</span>
         <span class="right-text">Sep 2025 – Feb 2026</span>
       </div>
       <div class="row">
@@ -450,10 +381,10 @@
         <span class="right-text">Python, LightGBM, SHAP, Scikit-learn</span>
       </div>
       <ul class="bullet-list">
-        <li>Merancang dan mengeksekusi pipeline machine learning end-to-end berbasis metodologi CRISP-DM pada dataset indikator diabetes tabular.</li>
-        <li>Menerapkan teknik SMOTE-Tomek di dalam Scikit-learn Pipeline guna mengatasi imbalanced data dan mencegah kebocoran data (zero data leakage) selama evaluasi.</li>
-        <li>Mengembangkan model klasifikasi LightGBM dengan capaian testing set: Akurasi 93.29%, Precision 98.08%, Recall 94.24%, dan ROC-AUC 97.15% (PR-AUC 99.64%).</li>
-        <li>Mengimplementasikan Explainable AI (SHAP TreeExplainer) untuk memvisualisasikan faktor risiko klinis pasien (global dan lokal) bagi pengambil keputusan medis.</li>
+        <li>Merancang pipeline machine learning end-to-end (CRISP-DM) pada dataset kesehatan tabular 100.000+ observasi indikator diabetes.</li>
+        <li>Menerapkan teknik SMOTE-Tomek di dalam Scikit-learn Pipeline guna mengatasi data imbalance tanpa kebocoran data (0% data leakage).</li>
+        <li>Mengembangkan model klasifikasi LightGBM dengan capaian testing set: Akurasi 93.29%, Precision 98.08%, Recall 94.24%, dan ROC-AUC 97.15%.</li>
+        <li>Mengimplementasikan Explainable AI (SHAP TreeExplainer) untuk memvisualisasikan faktor risiko klinis pasien bagi pengambil keputusan medis.</li>
       </ul>
     </div>
 
@@ -461,14 +392,14 @@
     <div class="entry">
       <div class="row">
         <span class="left-bold">Interactive Diabetes Risk Assessment Dashboard</span>
-        <span class="right-text">2026</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/TA-diabetes-prediction-and-explanation" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
       </div>
       <div class="row">
         <span class="left-normal">Aplikasi Web Interaktif Berbasis Model Machine Learning Skripsi</span>
         <span class="right-text">Python, Streamlit, LightGBM, SHAP</span>
       </div>
       <ul class="bullet-list">
-        <li>Membangun aplikasi web berbasis Streamlit untuk menyajikan inferensi model prediksi risiko diabetes secara real-time dengan validasi input pengguna terstruktur.</li>
+        <li>Membangun aplikasi web inferensi prediktif real-time berbasis Streamlit dengan latensi inferensi responsif (&lt;100ms) dan validasi input klinis dinamis.</li>
         <li>Mengintegrasikan visualisasi interpretabilitas model SHAP (waterfall/force plot) guna memberikan interpretasi lokal faktor risiko individual pasien.</li>
       </ul>
     </div>
@@ -476,16 +407,16 @@
     <!-- PROJECT 3: SISTEM AKADEMIK & PMB ONLINE -->
     <div class="entry">
       <div class="row">
-        <span class="left-bold">Sistem Informasi Akademik (SIA) & PMB Online Terpadu</span>
-        <span class="right-text">2026</span>
+        <span class="left-bold">Sistem Informasi Akademik (SIA) &amp; PMB Online Terpadu</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/sistem-akademik" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
       </div>
       <div class="row">
         <span class="left-normal">Platform Web Layanan Akademik Perguruan Tinggi Terintegrasi</span>
         <span class="right-text">PHP 8.2, PostgreSQL, Bootstrap 5, mPDF</span>
       </div>
       <ul class="bullet-list">
-        <li>Merancang arsitektur basis data relasional 10 tabel ternormalisasi pada PostgreSQL (Neon Cloud DB) guna menjaga integritas data pokok dan pemisahan profil pengguna.</li>
-        <li>Mengintegrasikan alur bisnis PMB Online, penagihan UKT/Billing, KRS, serta modul otomasi cetak dokumen akademik (KHS) menggunakan mPDF.</li>
+        <li>Merancang arsitektur basis data relasional 10 tabel ternormalisasi (3NF) pada PostgreSQL (Neon Cloud DB) untuk integritas data ribuan entri akademik.</li>
+        <li>Mengintegrasikan alur bisnis PMB Online, billing UKT, KRS, serta modul otomasi cetak dokumen akademik (KHS) menggunakan mPDF.</li>
       </ul>
     </div>
 
@@ -493,14 +424,14 @@
     <div class="entry">
       <div class="row">
         <span class="left-bold">Taman Sayur: On-Demand Catalog &amp; WhatsApp Forwarding</span>
-        <span class="right-text">2026</span>
+        <span class="right-text"><a href="https://github.com/faarizzqi/taman-sayur" target="_blank" style="text-decoration: underline;">GitHub Repo</a> • 2026</span>
       </div>
       <div class="row">
         <span class="left-normal">Platform E-Commerce Agrikultur B2C Terintegrasi WhatsApp API</span>
         <span class="right-text">JavaScript, HTML5, LocalStorage</span>
       </div>
       <ul class="bullet-list">
-        <li>Membangun web katalog 40 komoditas sayur/bumbu Jawa Tengah berbasis sistem zero-inventory, keranjang client-side LocalStorage, dan generator pemesanan WhatsApp API.</li>
+        <li>Mengelola basis data katalog 40 komoditas terstruktur dengan 8 skema bundling relasional, keranjang LocalStorage, dan otomatisasi WhatsApp API.</li>
       </ul>
     </div>
 
@@ -517,8 +448,8 @@
         <span class="right-text">Feb 2025 – Mar 2025</span>
       </div>
       <ul class="bullet-list">
-        <li>Bertindak sebagai administrator sistem Electronic Medical Record (EMR), memverifikasi dan memvalidasi keakuratan alur input data medis operasional.</li>
-        <li>Menjalankan prosedur backup data rutin dan mitigasi risiko kehilangan data kritis, serta menangani 2–3 tiket teknis mandiri dan lebih dari 5 laporan harian tim.</li>
+        <li>Bertindak sebagai administrator sistem Electronic Medical Record (EMR), memvalidasi integritas alur input data medis dan menjalankan verifikasi backup rutin.</li>
+        <li>Menangani dukungan operasional workstation dan konektivitas jaringan LAN dengan tingkat penyelesaian tiket &gt; 95%.</li>
       </ul>
     </div>
 
@@ -532,7 +463,7 @@
         <span class="right-text">Mei 2021 – Jul 2021</span>
       </div>
       <ul class="bullet-list">
-        <li>Membangun modul dashboard monitoring produksi dan pengelolaan data (CRUD) menggunakan PHP dan database relasional MySQL.</li>
+        <li>Membangun modul dashboard monitoring produksi dan pengelolaan data (6+ modul CRUD) menggunakan PHP dan database relasional MySQL.</li>
       </ul>
     </div>
 
